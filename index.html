@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JagaRuang — Edukasi Anti-Cyberbullying & Dukungan Siswa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="brand">
+        <span class="brand-badge">JagaRuang</span>
+        <span class="brand-sub">Portal Edukasi & Simulasi Dukungan Siswa</span>
+      </div>
+      <nav class="nav-links" aria-label="Navigasi Utama">
+        <a href="#tentang">Masalah & Tujuan</a>
+        <a href="#edukasi">Edukasi</a>
+        <a href="#simulasi-ai">Simulasi AI</a>
+        <a href="#lapor">Lapor Simulasi</a>
+        <a href="#petunjuk">Petunjuk</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero & Informasi Proyek -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Proyek PSAS Informatika TIK • Kelas XI</p>
+          <h1>Ruang Aman untuk Memahami & Mencegah Cyberbullying di Kalangan Pelajar</h1>
+          <p class="lead">
+            <strong>JagaRuang</strong> membantu siswa SMA mengenali bentuk perundungan siber,
+            memahami langkah perlindungan diri, berlatih respons aman melalui simulasi AI, dan
+            mengirim laporan contoh/simulasi tanpa mengungkap data pribadi asli.
+          </p>
+          <div class="hero-actions">
+            <a href="#simulasi-ai" class="btn btn-primary">Coba Simulasi AI</a>
+            <a href="#lapor" class="btn btn-secondary">Form Pelaporan Simulasi</a>
+          </div>
+        </div>
+        <aside class="info-card" id="tentang">
+          <h2>Analisis Masalah & Sasaran</h2>
+          <ul class="info-list">
+            <li><strong>Sasaran Pengguna:</strong> Siswa SMA (usia 15–18 tahun) dan warga sekolah.</li>
+            <li><strong>Masalah Sosial:</strong> Komentar merendahkan, pengucilan di grup chat, dan penyebaran konten tanpa izin sering memicu stres serta keengganan melapor.</li>
+            <li><strong>Tujuan Solusi:</strong> Menyediakan edukasi praktis, simulasi dukungan awal berlabel jelas, dan alur pencatatan masukan simulatif yang etis.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Edukasi & Langkah Praktis -->
+    <section id="edukasi" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Jenis Cyberbullying & Langkah Aman</h2>
+          <p>Pilih kategori di bawah untuk melihat contoh kasus dan tindakan awal yang disarankan.</p>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter Edukasi">
+          <button type="button" class="filter-btn active" data-category="semua">Semua</button>
+          <button type="button" class="filter-btn" data-category="verbal">Komentar & Intimidasi</button>
+          <button type="button" class="filter-btn" data-category="privasi">Penyebaran Data/Konten</button>
+          <button type="button" class="filter-btn" data-category="sosial">Pengucilan Daring</button>
+        </div>
+
+        <div id="eduCards" class="cards-grid"></div>
+      </div>
+    </section>
+
+    <!-- Simulasi Asisten AI -->
+    <section id="simulasi-ai" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag-simulasi">SIMULASI EDUKASI (BUKAN LAYANAN KONSELING NYATA)</span>
+          <h2>Simulasi Panduan Respons Awal Berbantuan AI</h2>
+          <p>
+            Fitur ini mensimulasikan alur saran awal berbasis aturan & draf prompt AI yang telah
+            diverifikasi agar tetap mengarahkan siswa ke guru BK, orang tua, atau pihak tepercaya.
+          </p>
+        </div>
+
+        <div class="sim-box">
+          <label for="scenarioSelect">Pilih Situasi Contoh:</label>
+          <select id="scenarioSelect">
+            <option value="komentar">Mendapat komentar mengejek berulang di unggahan media sosial</option>
+            <option value="grup">Dikeluarkan mendadak dan dibicarakan buruk di grup kelas</option>
+            <option value="foto">Foto pribadi disebarkan tanpa izin ke teman lain</option>
+            <option value="ancaman">Menerima pesan bernada ancaman atau pemerasan daring</option>
+          </select>
+
+          <button type="button" id="generateSimBtn" class="btn btn-primary">
+            Jalankan Simulasi Saran
+          </button>
+
+          <div id="simResult" class="sim-output" aria-live="polite">
+            <p class="muted">Pilih situasi lalu klik <strong>Jalankan Simulasi Saran</strong> untuk melihat contoh respons terverifikasi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulir Pelaporan Simulasi -->
+    <section id="lapor" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Formulir Pelaporan / Catatan Simulasi</h2>
+          <p>
+            Terhubung ke Google Apps Script / Google Sheets untuk pencatatan contoh kasus.
+            <strong>Penting:</strong> Jangan masukkan nama asli, nomor HP, alamat, atau identitas asli siapa pun.
+          </p>
+        </div>
+
+        <form id="reportForm" class="form-card" novalidate>
+          <div class="form-group">
+            <label for="aliasName">Nama Samaran / Kode Uji (Wajib)</label>
+            <input
+              type="text"
+              id="aliasName"
+              name="aliasName"
+              maxlength="40"
+              placeholder="Contoh: SiswaUji-01"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="incidentType">Kategori Kejadian (Wajib)</label>
+            <select id="incidentType" name="incidentType" required>
+              <option value="">-- Pilih Kategori --</option>
+              <option value="Komentar Merendahkan">Komentar Merendahkan</option>
+              <option value="Pengucilan Daring">Pengucilan Daring</option>
+              <option value="Penyebaran Konten Tanpa Izin">Penyebaran Konten Tanpa Izin</option>
+              <option value="Pesan Mengancam">Pesan Mengancam</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="summary">Ringkasan Situasi Contoh (Wajib, gunakan data fiktif/contoh)</label>
+            <textarea
+              id="summary"
+              name="summary"
+              rows="4"
+              maxlength="400"
+              placeholder="Contoh: Akun anonim mengirim komentar ejekan di kolom komentar tugas kelompok."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="consentCheck" required />
+            <label for="consentCheck">
+              Saya menyatakan data yang dimasukkan hanya berupa contoh/simulasi dan tidak memuat data pribadi nyata.
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Kirim Catatan Simulasi</button>
+            <span id="formStatus" class="status-text" role="status"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Petunjuk Penggunaan & Etika -->
+    <section id="petunjuk" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Petunjuk Penggunaan & Etika Keamanan</h2>
+        </div>
+        <div class="guide-grid">
+          <div class="guide-box">
+            <h3>Cara Menggunakan Website</h3>
+            <ol>
+              <li>Baca bagian <strong>Masalah & Tujuan</strong> untuk memahami konteks isu.</li>
+              <li>Gunakan filter pada <strong>Edukasi</strong> untuk mempelajari pola perundungan siber dan langkah aman.</li>
+              <li>Uji skenario pada <strong>Simulasi AI</strong> dan perhatikan label simulasinya.</li>
+              <li>Isi <strong>Formulir Pelaporan Simulasi</strong> dengan data contoh untuk menguji pengiriman data.</li>
+            </ol>
+          </div>
+          <div class="guide-box">
+            <h3>Prinsip Etika & Privasi</h3>
+            <ul>
+              <li>Tidak menyimpan data pribadi asli pengguna maupun pihak lain.</li>
+              <li>Tidak menaruh kata sandi, token, atau API key di dalam kode GitHub.</li>
+              <li>Mengarahkan kasus nyata yang membahayakan ke guru BK, wali kelas, atau orang dewasa tepercaya.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p><strong>JagaRuang</strong> • Proyek Informatika TIK SMA Kelas XI (2026/2027)</p>
+      <p class="muted">Fitur AI pada halaman ini bersifat simulasi edukatif.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
